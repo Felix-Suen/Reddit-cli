@@ -24,7 +24,12 @@ def get_posts():
 
     print(90 * '-')
     print('choose a post: ')
-    number = int(input()) - 1
+    number = input()
+    try:
+        number = int(number) - 1
+    except ValueError:
+        print("not a valid number \n")
+        get_posts()
     print('\n' + 'Upvotes: ' + str(top[number].score))
     print('\n' + top[number].selftext + '\n' + top[number].url)
     print('\n' + 40 * '-' + 'END OF POST' + 40 * '-' + '\n')
