@@ -33,6 +33,7 @@ def get_posts():
         print("not a valid number \n")
         get_posts()
 
+    print('\n' + top[number].id)
     print('\n' + 'Upvotes: ' + str(top[number].score))
     print('\n' + top[number].selftext + '\n' + top[number].url)
     print('\n' + 40 * '-' + 'END OF POST' + 40 * '-' + '\n')
@@ -40,13 +41,20 @@ def get_posts():
     return top[number]
 
 def get_comment(top_post):
+    top_post.comments.replace_more(limit=0)
     for comment in top_post.comments:
         print('{' + str(comment.score) + '} >> ' + comment.body)
     print('\n' + 40 * '-' + 'END OF Comments' + 40 * '-' + '\n')
 
 def all_comments(top_post):
-    # need work
-    print(top_post)
+    top_post.comments.replace_more(limit=0)
+    comments = top_post.comments.list()
+    for comment in comments:
+        print('\n' + 60*'-')
+        print('Parent ID: ', comment.parent())
+        print('Comment ID: ', comment.id)
+        print(comment.body)
+    print('\n' + 40 * '-' + 'END OF Comments' + 40 * '-' + '\n')
 
 def back():
     os.system("cls")
