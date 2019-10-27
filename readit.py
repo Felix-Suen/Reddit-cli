@@ -2,7 +2,6 @@ import praw
 from functools import partial
 import os
 import credentials
-from pprint import pprint
 import platform
 
 ####################### Credentials ##################################
@@ -48,7 +47,7 @@ def get_comment(top_post):
         print('{' + str(comment.score) + '} >> ' + comment.body)
     print('\n' + 40 * '-' + 'END OF Comments' + 40 * '-' + '\n')
 
-
+# Bottom-up algorithm
 def all_comments(top_post):
     top_post.comments.replace_more(limit=0)
     comments = top_post.comments.list()
@@ -66,10 +65,6 @@ def all_comments(top_post):
             d[comment['parent_id']]['children'].append(comment)
             del d[c]
 
-    if platform.system() == 'Windows':
-        os.system('cls')
-    else:
-        os.system('clear')
     p(list(d.values()), top_post.id)
 
     return d
@@ -83,17 +78,14 @@ def p(coms, post_id, depth=0):
             p(comobj['children'], post_id, depth = depth+1)
         
 def back():
-    if platform.system() == 'Windows':
-        os.system('cls')
-    else:
-        os.system('clear')
+    clear()
     global post_lst
     post_lst = get_posts()
 
 def stop_browsing():
     global continued
     continued = False
-    os.system("cls")
+    clear()
 
 def help():
     print(
@@ -103,6 +95,10 @@ def help():
         "(q or quit) Stop browsing \n"
     )
     looper()
+
+def clear():
+    windows = platform.system() == 'Windows'
+    os.system('cls') if windows else os.system('clear')
 #############################################################
 # Endless Browse
 
