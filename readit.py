@@ -15,6 +15,7 @@ reddit = praw.Reddit(client_id= credentials.login['client_id'],
 continued = True
 
 def get_posts():
+    clear()
     print('Subreddit: ')
     subred = input()
     print(90 * '-')
@@ -75,7 +76,7 @@ def p(coms, post_id, depth=0):
     for comobj in coms:
         if comobj['parent_id'] == post_id:
             print('-' * 80)
-        print(depth * '>>>>' + '[' + str(comobj['upvote']) + '] ' + comobj['body'] + '\n')
+        print(depth * '>>>> ' + '[' + str(comobj['upvote']) + '] ' + comobj['body'] + '\n')
         if len(comobj['children']) > 0:
             p(comobj['children'], post_id, depth = depth+1)
         
