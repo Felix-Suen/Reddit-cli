@@ -47,7 +47,8 @@ def get_comment(top_post):
         print('{' + str(comment.score) + '} >> ' + comment.body)
     print('\n' + 40 * '-' + 'END OF Comments' + 40 * '-' + '\n')
 
-# Bottom-up algorithm
+
+###################### Bottom up sorting algorithm ######################
 def all_comments(top_post):
     top_post.comments.replace_more(limit=0)
     comments = top_post.comments.list()
@@ -57,6 +58,7 @@ def all_comments(top_post):
             d[comment.id] = {'id': comment.id,
                              'parent_id': comment.parent().id,
                              'body': comment.body,
+                             'upvote': comment.score,
                              'children': []}
 
     for c in list(d.keys())[::-1]:
@@ -66,14 +68,14 @@ def all_comments(top_post):
             del d[c]
 
     p(list(d.values()), top_post.id)
+#########################################################################
 
-    return d
 
 def p(coms, post_id, depth=0):
     for comobj in coms:
         if comobj['parent_id'] == post_id:
             print('-' * 80)
-        print(depth * '>>>> ' + comobj['body'] + '\n')
+        print(depth * '>>>>' + '[' + str(comobj['upvote']) + '] ' + comobj['body'] + '\n')
         if len(comobj['children']) > 0:
             p(comobj['children'], post_id, depth = depth+1)
         
@@ -99,6 +101,7 @@ def help():
 def clear():
     windows = platform.system() == 'Windows'
     os.system('cls') if windows else os.system('clear')
+
 #############################################################
 # Endless Browse
 
