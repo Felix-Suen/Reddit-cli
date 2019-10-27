@@ -4,6 +4,7 @@ import os
 import credentials
 import platform
 from colorama import Fore, Style
+import webbrowser
 
 ####################### Credentials ##################################
 reddit = praw.Reddit(client_id= credentials.login['client_id'],
@@ -36,12 +37,17 @@ def get_posts():
         print("not a valid number \n")
         get_posts()
 
-    print('\n' + top[number].id)
     print('\n' + 'Upvotes: ' + Fore.GREEN + str(top[number].score) + Style.RESET_ALL)
     print('\n' + top[number].selftext + '\n' + top[number].url)
     print('\n' + 40 * '-' + 'END OF POST' + 40 * '-' + '\n')
 
     return top[number]
+
+def open_image(top_post):
+    if top_post.url.endswith('jpg') or top_post.url.endswith('png'):
+        webbrowser.open(top_post.url)
+    else:
+        print(Fore.RED + '\n ***No image in the post*** \n' + Style.RESET_ALL)
 
 def get_comment(top_post):
     top_post.comments.replace_more(limit=0)
@@ -105,7 +111,7 @@ def clear():
     windows = platform.system() == 'Windows'
     os.system('cls') if windows else os.system('clear')
 
-#############################################################
+#########################################################################
 # Endless Browse
 
 def looper():
@@ -123,6 +129,7 @@ def looper():
         'back': back,
         'q': stop_browsing,
         'quit': stop_browsing,
+        'v': partial(open_image, post_lst),
         '-h': help,
         'h': help,
         'help': help
@@ -131,7 +138,7 @@ def looper():
     func()
 
 
-#############################################################
+#########################################################################
 # Run
 post_lst = get_posts()
 while continued:
