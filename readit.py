@@ -3,6 +3,7 @@ from functools import partial
 import os
 import credentials
 from pprint import pprint
+import platform
 
 ####################### Credentials ##################################
 reddit = praw.Reddit(client_id= credentials.login['client_id'],
@@ -65,7 +66,10 @@ def all_comments(top_post):
             d[comment['parent_id']]['children'].append(comment)
             del d[c]
 
-    os.system('clear')
+    if platform.system() == 'Windows':
+        os.system('cls')
+    else:
+        os.system('clear')
     p(list(d.values()), top_post.id)
 
     return d
@@ -79,7 +83,10 @@ def p(coms, post_id, depth=0):
             p(comobj['children'], post_id, depth = depth+1)
         
 def back():
-    os.system("clear")
+    if platform.system() == 'Windows':
+        os.system('cls')
+    else:
+        os.system('clear')
     global post_lst
     post_lst = get_posts()
 
