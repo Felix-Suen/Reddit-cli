@@ -3,6 +3,7 @@ from functools import partial
 import os
 import credentials
 import platform
+from colorama import Fore, Style
 
 ####################### Credentials ##################################
 reddit = praw.Reddit(client_id= credentials.login['client_id'],
@@ -36,7 +37,7 @@ def get_posts():
         get_posts()
 
     print('\n' + top[number].id)
-    print('\n' + 'Upvotes: ' + str(top[number].score))
+    print('\n' + 'Upvotes: ' + Fore.GREEN + str(top[number].score) + Style.RESET_ALL)
     print('\n' + top[number].selftext + '\n' + top[number].url)
     print('\n' + 40 * '-' + 'END OF POST' + 40 * '-' + '\n')
 
@@ -75,8 +76,9 @@ def all_comments(top_post):
 def p(coms, post_id, depth=0):
     for comobj in coms:
         if comobj['parent_id'] == post_id:
-            print('-' * 80)
-        print(depth * '>>>> ' + '[' + str(comobj['upvote']) + '] ' + comobj['body'] + '\n')
+            print('-' * 90)
+        print(depth * '>>>> ' + '[' + Fore.GREEN + str(comobj['upvote']) + Style.RESET_ALL + '] '
+              + comobj['body'] + '\n')
         if len(comobj['children']) > 0:
             p(comobj['children'], post_id, depth = depth+1)
         
