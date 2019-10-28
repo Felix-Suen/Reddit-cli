@@ -1,3 +1,4 @@
+# Grey Scale
 ASCII_CHARS = ['.',',',':',';','+','*','?','%','S','#','@']
 ASCII_CHARS = ASCII_CHARS[::-1]
 
@@ -6,6 +7,7 @@ method resize():
     - takes as parameters the image, and the final width
     - resizes the image into the final width while maintaining aspect ratio
 '''
+# To-do: shrink the ascii here
 def resize(image, new_width=100):
     (old_width, old_height) = image.size
     aspect_ratio = float(old_height)/float(old_width)
@@ -15,7 +17,6 @@ def resize(image, new_width=100):
     return new_image
 '''
 method grayscalify():
-    - takes an image as a parameter
     - returns the grayscale version of image
 '''
 def grayscalify(image):
