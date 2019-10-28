@@ -18,7 +18,7 @@ reddit = praw.Reddit(client_id=credentials.login['client_id'],
 continued = True
 viewing = False
 subred = None
-
+vote = False
 
 def get_posts():
     clear()
@@ -94,10 +94,26 @@ def all_comments(top_post):
 #########################################################################
 
 def upvote(top_post):
-    top_post.upvote()
+    global vote
+    if vote is False:
+        top_post.upvote()
+        vote = True
+        print('\n***Upvoted***\n')
+    else:
+        top_post.clear_vote()
+        vote = False
+        print('\n***Cleared Vote***\n')
 
 def downvote(top_post):
-    top_post.downvote()
+    global vote
+    if vote is False:
+        top_post.downvote()
+        vote = True
+        print('\n***Downvoted***\n')
+    else:
+        top_post.clear_vote()
+        vote = False
+        print('\n***Cleared Vote***\n')
 
 def p(coms, post_id, depth=0):
     for comobj in coms:
