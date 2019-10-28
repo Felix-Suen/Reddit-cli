@@ -4,20 +4,20 @@ import os
 import credentials
 import platform
 from colorama import Fore, Style
-import webbrowser
 from PIL import Image
 import urllib
 
 ####################### Credentials ##################################
-reddit = praw.Reddit(client_id= credentials.login['client_id'],
-                     client_secret= credentials.login['client_secret'],
-                     username= credentials.login['username'],
-                     password= credentials.login['password'],
-                     user_agent= credentials.login['user_agent'])
+reddit = praw.Reddit(client_id=credentials.login['client_id'],
+                     client_secret=credentials.login['client_secret'],
+                     username=credentials.login['username'],
+                     password=credentials.login['password'],
+                     user_agent=credentials.login['user_agent'])
 ######################################################################
 
 continued = True
 viewing = False
+
 
 def get_posts():
     clear()
@@ -46,9 +46,9 @@ def get_posts():
 
     return top[number]
 
+
 def open_image(top_post):
     if top_post.url.endswith('jpg') or top_post.url.endswith('png'):
-        # webbrowser.open(top_post.url)
         urllib.request.urlretrieve(top_post.url, "img.jpg")
         path = "img.jpg"
         image = Image.open(path)
@@ -57,6 +57,7 @@ def open_image(top_post):
         viewing = True
     else:
         print(Fore.RED + '\n ***No image in the post*** \n' + Style.RESET_ALL)
+
 
 def get_comment(top_post):
     top_post.comments.replace_more(limit=0)
@@ -85,6 +86,8 @@ def all_comments(top_post):
             del d[c]
 
     p(list(d.values()), top_post.id)
+
+
 #########################################################################
 
 
@@ -95,17 +98,20 @@ def p(coms, post_id, depth=0):
         print(depth * '>>>> ' + '[' + Fore.GREEN + str(comobj['upvote']) + Style.RESET_ALL + '] '
               + comobj['body'] + '\n')
         if len(comobj['children']) > 0:
-            p(comobj['children'], post_id, depth = depth+1)
-        
+            p(comobj['children'], post_id, depth=depth + 1)
+
+
 def back():
     clear()
     global post_lst
     post_lst = get_posts()
 
+
 def stop_browsing():
     global continued
     continued = False
     clear()
+
 
 def help():
     print(
@@ -116,9 +122,11 @@ def help():
     )
     looper()
 
+
 def clear():
     windows = platform.system() == 'Windows'
     os.system('cls') if windows else os.system('clear')
+
 
 #########################################################################
 # Endless Browse
