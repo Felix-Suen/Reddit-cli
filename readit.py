@@ -5,6 +5,8 @@ import credentials
 import platform
 from colorama import Fore, Style
 import webbrowser
+from PIL import Image
+import urllib
 
 ####################### Credentials ##################################
 reddit = praw.Reddit(client_id= credentials.login['client_id'],
@@ -15,6 +17,7 @@ reddit = praw.Reddit(client_id= credentials.login['client_id'],
 ######################################################################
 
 continued = True
+viewing = False
 
 def get_posts():
     clear()
@@ -45,7 +48,13 @@ def get_posts():
 
 def open_image(top_post):
     if top_post.url.endswith('jpg') or top_post.url.endswith('png'):
-        webbrowser.open(top_post.url)
+        # webbrowser.open(top_post.url)
+        urllib.request.urlretrieve(top_post.url, "img.jpg")
+        path = "img.jpg"
+        image = Image.open(path)
+        image.show()
+        global viewing
+        viewing = True
     else:
         print(Fore.RED + '\n ***No image in the post*** \n' + Style.RESET_ALL)
 
@@ -115,6 +124,10 @@ def clear():
 # Endless Browse
 
 def looper():
+    global viewing
+    if viewing:
+        os.remove('img.jpg')
+        viewing = False
     print('options: ')
     try:
         num = input()
