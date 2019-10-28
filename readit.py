@@ -17,12 +17,15 @@ reddit = praw.Reddit(client_id=credentials.login['client_id'],
 
 continued = True
 viewing = False
+subred = None
 
 
 def get_posts():
     clear()
-    print('Subreddit: ')
-    subred = input()
+    global subred
+    if subred == None:
+        print('Subreddit: ')
+        subred = input()
     print(90 * '-')
     subreddit = reddit.subreddit(subred)
     top_posts = subreddit.hot(limit=20)
@@ -107,6 +110,13 @@ def back():
     post_lst = get_posts()
 
 
+def reset():
+    clear()
+    global post_lst, subred
+    subred = None
+    post_lst = get_posts()
+
+
 def stop_browsing():
     global continued
     continued = False
@@ -118,6 +128,7 @@ def help():
         "\n(m) Top comments for this post \n"
         "(lm) All comments for this post \n"
         "(b) Back to subreddit \n"
+        "(r) Reset program"
         "(q or quit) Stop browsing \n"
     )
     looper()
@@ -148,6 +159,7 @@ def looper():
         'lm': partial(all_comments, post_lst),
         'b': back,
         'back': back,
+        'r': reset,
         'q': stop_browsing,
         'quit': stop_browsing,
         'v': partial(open_image, post_lst),
