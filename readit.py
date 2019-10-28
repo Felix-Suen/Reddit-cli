@@ -68,8 +68,7 @@ def img_to_ascii(top_post):
         urllib.request.urlretrieve(top_post.url, "img.jpg")
         path = "img.jpg"
         image = Image.open(path)
-        # implement Ascii Converter Function
-        ascii.test()
+        ascii.runner(image)
         global viewing
         viewing = True
     else:
