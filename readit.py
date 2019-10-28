@@ -62,6 +62,17 @@ def open_image(top_post):
         print(Fore.RED + '\n ***No image in the post*** \n' + Style.RESET_ALL)
 
 
+def img_to_ascii(top_post):
+    if top_post.url.endswith('jpg') or top_post.url.endswith('png'):
+        urllib.request.urlretrieve(top_post.url, "img.jpg")
+        path = "img.jpg"
+        image = Image.open(path)
+        # implement Ascii Converter
+        global viewing
+        viewing = True
+    else:
+        print(Fore.RED + '\n ***No image in the post*** \n' + Style.RESET_ALL)
+
 def get_comment(top_post):
     top_post.comments.replace_more(limit=0)
     for comment in top_post.comments:
@@ -180,6 +191,7 @@ def looper():
         'lm': partial(all_comments, post_lst),
         'up': partial(upvote, post_lst),
         'down': partial(downvote, post_lst),
+        'asc': partial(img_to_ascii, post_lst),
         'b': back,
         'back': back,
         'r': reset,
