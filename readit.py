@@ -93,6 +93,11 @@ def all_comments(top_post):
 
 #########################################################################
 
+def upvote(top_post):
+    top_post.upvote()
+
+def downvote(top_post):
+    top_post.downvote()
 
 def p(coms, post_id, depth=0):
     for comobj in coms:
@@ -157,6 +162,8 @@ def looper():
     switcher = {
         'm': partial(get_comment, post_lst),
         'lm': partial(all_comments, post_lst),
+        'up': partial(upvote, post_lst),
+        'down': partial(downvote, post_lst),
         'b': back,
         'back': back,
         'r': reset,
