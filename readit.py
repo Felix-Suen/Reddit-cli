@@ -6,6 +6,7 @@ import platform
 from colorama import Fore, Style
 from PIL import Image
 import urllib
+import ascii
 
 ####################### Credentials ##################################
 reddit = praw.Reddit(client_id=credentials.login['client_id'],
@@ -68,6 +69,7 @@ def img_to_ascii(top_post):
         path = "img.jpg"
         image = Image.open(path)
         # implement Ascii Converter Function
+        ascii.test()
         global viewing
         viewing = True
     else:
