@@ -50,6 +50,4 @@ def do(image, new_width=100):
 
 def runner(image):
     image = do(image)
-
-    # To print on console
     print(image)
