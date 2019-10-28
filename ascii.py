@@ -1,7 +1,3 @@
-from PIL import Image
-import sys
-import urllib.request
-
 ASCII_CHARS = ['.',',',':',';','+','*','?','%','S','#','@']
 ASCII_CHARS = ASCII_CHARS[::-1]
 
@@ -50,12 +46,7 @@ def do(image, new_width=100):
 
     return '\n'.join(new_image)
 
-'''
-method runner():
-    - takes as parameter the image path and runs the above code
-    - handles exceptions as well
-    - provides alternative output options
-'''
+
 def runner(image):
     image = do(image)
 
