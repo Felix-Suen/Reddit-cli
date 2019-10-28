@@ -157,6 +157,7 @@ def stop_browsing():
 
 
 def help():
+    # Update
     print(
         "\n(m) Top comments for this post \n"
         "(lm) All comments for this post \n"
@@ -193,12 +194,12 @@ def looper():
         'up': partial(upvote, post_lst),
         'down': partial(downvote, post_lst),
         'asc': partial(img_to_ascii, post_lst),
+        'v': partial(open_image, post_lst),
         'b': back,
         'back': back,
         'r': reset,
         'q': stop_browsing,
         'quit': stop_browsing,
-        'v': partial(open_image, post_lst),
         '-h': help,
         'h': help,
         'help': help
