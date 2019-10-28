@@ -11,7 +11,7 @@ method resize():
 def resize(image, new_width=100):
     (old_width, old_height) = image.size
     aspect_ratio = float(old_height)/float(old_width)
-    new_height = int(aspect_ratio * new_width)
+    new_height = int(aspect_ratio * new_width / 2.5)
     new_dim = (new_width, new_height)
     new_image = image.resize(new_dim)
     return new_image
