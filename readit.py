@@ -157,12 +157,15 @@ def stop_browsing():
 
 
 def help():
-    # Update
     print(
         "\n(m) Top comments for this post \n"
         "(lm) All comments for this post \n"
-        "(b) Back to subreddit \n"
-        "(r) Reset program"
+        "(up) Upvote the post \n"
+        "(down) Downvote the post \n"
+        "(asc) View Image in Ascii Art \n"
+        "(v) View Image without download \n"
+        "(b) Back to the subreddit \n"
+        "(r) Reset program \n"
         "(q or quit) Stop browsing \n"
     )
     looper()
