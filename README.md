@@ -29,5 +29,6 @@ Run the program
 ```powershell
 python readit.py
 ```
-
+Happy Browsing!
+![alt text](https://github.com/Felix-Suen/Reddit-cli/blob/master/start.JPG)
 
