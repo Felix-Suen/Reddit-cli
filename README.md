@@ -4,7 +4,7 @@
 A seemingly **productive** yet **unproductive** tool for redditors. <br />
 Windows/MacOS/Linux supported. 
 
-###Demo
+### Demo
 hello
 
 ### Getting Started
