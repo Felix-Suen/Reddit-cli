@@ -1,11 +1,10 @@
-# Reddit-cli
+# Reddit Simple Command Line Interface
 
-### Command Line Interface to browse Reddit
-A seemingly **productive** yet **unproductive** tool for redditors. <br />
+### Seemingly productive yet unproductive tool for redditors
 Windows/MacOS/Linux supported. 
 
 ### Demo
-hello
+
 
 ### Getting Started
 Make sure all libraries are installed with pip
@@ -25,6 +24,10 @@ reddit = praw.Reddit(client_id= 'YOUR_CLIENT_ID',
                      username= 'YOUR_REDDIT_USERNAME',
                      password= 'YOUR_REDDIT_PASSWORD',
                      user_agent= 'anystring')
+```
+Run the program
+```powershell
+python readit.py
 ```
 
 

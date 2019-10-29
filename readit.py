@@ -25,7 +25,7 @@ def get_posts():
     clear()
     global subred
     if subred is None:
-        print('Subreddit: ')
+        print('Enter a Subreddit: ')
         subred = input()
     print(90 * '-')
     subreddit = reddit.subreddit(subred)
