@@ -24,7 +24,7 @@ vote = False
 def get_posts():
     clear()
     global subred
-    if subred == None:
+    if subred is None:
         print('Subreddit: ')
         subred = input()
     print(90 * '-')
@@ -156,7 +156,7 @@ def stop_browsing():
     clear()
 
 
-def help():
+def help_menu():
     print(
         "\n(m) Top comments for this post \n"
         "(lm) All comments for this post \n"
@@ -203,9 +203,9 @@ def looper():
         'r': reset,
         'q': stop_browsing,
         'quit': stop_browsing,
-        '-h': help,
-        'h': help,
-        'help': help
+        '-h': help_menu,
+        'h': help_menu,
+        'help': help_menu
     }
     func = switcher.get(num, lambda: "invalid option")
     func()
