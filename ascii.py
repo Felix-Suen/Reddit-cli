@@ -5,7 +5,7 @@ ASCII_CHARS = ASCII_CHARS[::-1]
 '''
 method resize():
     - takes as parameters the image, and the final width
-    - resizes the image into the final width while maintaining aspect ratio
+    - task to shrink resolution for smaller image
 '''
 
 def resize(image, new_width=100):
@@ -31,10 +31,6 @@ def modify(image, buckets=25):
     new_pixels = [ASCII_CHARS[pixel_value//buckets] for pixel_value in initial_pixels]
     return ''.join(new_pixels)
 
-'''
-method do():
-    - does all the work by calling all the above functions
-'''
 def do(image, new_width=100):
     image = resize(image)
     image = grayscalify(image)
@@ -47,7 +43,7 @@ def do(image, new_width=100):
 
     return '\n'.join(new_image)
 
-
+# Connects to readit.py
 def runner(image):
     image = do(image)
     print(image)
