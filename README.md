@@ -28,5 +28,5 @@ Run the program
 python readit.py
 ```
 ### Happy Browsing!
-![alt text](https://github.com/Felix-Suen/Reddit-cli/blob/master/start.JPG)
+![alt text](https://github.com/Felix-Suen/Reddit-cli/blob/master/start.png)
 
