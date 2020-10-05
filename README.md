@@ -3,8 +3,6 @@
 ### Seemingly productive yet unproductive tool for redditors
 Windows/MacOS/Linux supported. 
 
-### Demo
-
 
 ### Getting Started
 Make sure all libraries are installed with pip
