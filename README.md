@@ -31,20 +31,20 @@ python readit.py
 ![alt text](https://github.com/Felix-Suen/Reddit-cli/blob/master/start.png)
 
 ### Commands
-> -h h help         Get a list of commands
+> -h h help.........Get a list of commands
 
-> lm                Display the all comments in the current post
+> lm................Display the all comments in the current post
 
-> up                Upvote the current post
+> up................Upvote the current post
 
-> down              Downvote the current post
+> down..............Downvote the current post
 
-> asc               View image as ASCII art
+> asc...............View image as ASCII art
 
-> v                 View the image without downloading
+> v.................View the image without downloading
 
-> b                 Back to the subreddit
+> b.................Back to the subreddit
 
-> r                 Reset the program
+> r.................Reset the program
 
-> q quit            Quit the program
+> q quit............Quit the program
