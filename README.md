@@ -1,6 +1,6 @@
 # Reddit Simple Command Line Interface
 
-### Seemingly productive yet unproductive tool for redditors
+### productive tool for redditors
 Windows/MacOS/Linux supported. 
 
 
